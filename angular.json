@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "vetoSansFrontieres"
+    }
+  },
+  "defaultProject": "vetoSansFrontieres",
+  "cli": {
+    "analytics": "5df359d3-8db8-4875-86d8-a5b4bb871d8a"
+  }
 }
