@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 export interface ClinicStructure {
   name: string;
   image : string;
+  adress: string;
+  number: string;
 
 } 
 @Component({
@@ -30,15 +32,21 @@ export class ClinicsComponent {
     return [
       {
         name : 'MONTREAL',
-        image : this.getRandomClinicImage()
+        image : this.getRandomClinicImage(),
+        adress: '1234, rue LaRue, H2J 9Q5',
+        number: '291'
       },
       {
         name : 'GATINEAU',
-        image : this.getRandomClinicImage()
+        image : this.getRandomClinicImage(),
+        adress: '1234, rue LaRue, H2J 9Q5',
+        number: '042'
       },
       {
         name : 'ONTARIO',
-        image : this.getRandomClinicImage()
+        image : this.getRandomClinicImage(),
+        adress: '1234, rue LaRue, H2J 9Q5',
+        number: '934'
       },
       // {
       //   name : 'VANCOUVER',
