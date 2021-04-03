@@ -1,0 +1,9 @@
+
+#clinic-container {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content : center;
+    align-content : center;
+    height: calc(98% - 220px);
+    background-color:lightcoral;
+}
