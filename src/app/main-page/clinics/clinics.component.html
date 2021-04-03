@@ -1,3 +1,5 @@
-<div id="clinic-container">
-    <app-clinic-container></app-clinic-container>
+<div id="clinics-container">
+    <div *ngFor="let clinic of clinics" >
+        <app-clinic [clinicInformation]="clinic"></app-clinic>
+    </div>
 </div>

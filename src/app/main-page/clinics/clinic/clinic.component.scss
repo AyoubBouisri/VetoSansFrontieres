@@ -1,0 +1,48 @@
+
+#clinic-container {
+    position:relative;
+    display:flex;
+    background-color:lightblue;
+    align-items:center;
+    justify-content: center;
+    width: 450px;
+    height:300px;
+    margin:10px;
+    overflow:hidden;
+}
+
+#clinic-container:hover {
+    cursor:pointer;
+}
+
+#clinic-container:hover #background-panel {
+    transform: translateY(0);
+}
+
+#background-panel {
+    z-index : 1;
+    position:absolute;
+    transition: 0.4s;
+    background-color: rgb(57, 88, 102);
+    overflow:hidden;
+    transform: translateY(-300px);
+    width: 450px;
+    height:300px;
+}
+#clinic-image {
+    z-index:0;
+    transition: 0.2s;
+    overflow:hidden;
+    filter: brightness(70%);
+    height:100%;
+    border-radius:10px;
+}
+
+#clinic-name {
+    z-index:2;
+    position:absolute;
+    font-family: Raleway;
+    font-weight: bold;
+    font-size: 60px;
+    color: white;
+}
