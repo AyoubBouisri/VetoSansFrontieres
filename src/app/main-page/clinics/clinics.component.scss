@@ -8,3 +8,25 @@
     height: calc(98% - 220px);
     margin:auto;
 }
+
+
+#add-clinic {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    width: 450px;
+    height:300px;
+    border-radius:20px;
+    border: solid rgb(48, 68, 90);
+}
+#add-clinic:hover {
+    cursor: pointer;
+
+}
+#add-clinic:hover #add-img {
+    width:110px;
+}
+#add-img {
+    transition:0.2s;
+    width : 100px;
+}

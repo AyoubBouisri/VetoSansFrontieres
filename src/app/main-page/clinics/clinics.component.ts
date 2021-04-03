@@ -40,10 +40,10 @@ export class ClinicsComponent {
         name : 'ONTARIO',
         image : this.getRandomClinicImage()
       },
-      {
-        name : 'VANCOUVER',
-        image : this.getRandomClinicImage()
-      }
+      // {
+      //   name : 'VANCOUVER',
+      //   image : this.getRandomClinicImage()
+      // }
     ]
   }
 
