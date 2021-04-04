@@ -2,7 +2,7 @@
     display: grid;
     width: 99vw;
     height:98vh;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 82% 18%;
     grid-template-rows: 15% 85%;
 }
 
@@ -37,13 +37,38 @@
 #animals-container {
     grid-column: 1;
     grid-row: 1 2;
-    background-color:lightcoral;
 }
 
 #clinic-information-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
     grid-column: 2 ;
     grid-row:1;
     grid-row-end: 3;
-    background-color:lightgreen;
+    background-color:rgb(48, 68, 90);
+    padding-top: 50px;
+    font-family:Raleway;
+    font-size: 30px;
+    color:white;
 }
 
+#clinic-name {
+    font-family: Raleway;
+    font-size : 50px;
+    color:white;
+    margin-bottom: 100px;
+}
+
+#clinic-number {
+    color:white;
+    font-family:Raleway;
+    font-size: 30px;
+    margin-bottom: 100px;
+}
+
+#clinic-adress {
+    color:white;
+    font-family:Raleway;
+    font-size : 20px;
+}
