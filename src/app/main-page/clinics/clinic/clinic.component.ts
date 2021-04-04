@@ -12,7 +12,7 @@ export class ClinicComponent {
 
   constructor(private route : Router) { }
 
-  openClinicPage(event: any) : void {
+  openClinicPage() : void {
     this.route.navigate(['/clinic/' + this.clinicInformation.number])
   }
 

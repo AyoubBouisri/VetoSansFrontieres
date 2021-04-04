@@ -1,0 +1,49 @@
+#clinic-page-container {
+    display: grid;
+    width: 99vw;
+    height:98vh;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 15% 85%;
+}
+
+#search-container {
+    grid-column: 1 1;
+    grid-row: 1 1;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#search-img {
+    width: 30px;
+    height: 30px;
+}
+#search-input {
+    width: 60%;
+    height: 50px;
+    font-size : 25px;
+    padding-left : 30px;
+}
+
+#search-button {
+    width : 100px;
+    cursor: pointer;
+    margin-left : 5px;
+}
+
+#animals-container {
+    grid-column: 1;
+    grid-row: 1 2;
+    background-color:lightcoral;
+}
+
+#clinic-information-container {
+    grid-column: 2 ;
+    grid-row:1;
+    grid-row-end: 3;
+    background-color:lightgreen;
+}
+
