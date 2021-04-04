@@ -72,3 +72,24 @@
     font-family:Raleway;
     font-size : 20px;
 }
+
+#add-animal-btn {
+    position:absolute;
+    bottom:20px;
+    right:20%;
+    width:120px;
+    height:12s0px;
+}
+
+#add-animal-btn:hover {
+    cursor:pointer;
+}
+
+#add-animal-btn:hover #add-img {
+    filter: brightness(60%);
+}
+#add-img {
+    width:100%;
+    height:100%;
+    z-index:3;
+}

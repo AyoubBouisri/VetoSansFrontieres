@@ -8,6 +8,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { ClinicPageComponent } from './clinic-page/clinic-page.component';
 import { ClinicsComponent } from './main-page/clinics/clinics.component';
 import { ClinicComponent } from './main-page/clinics/clinic/clinic.component';
+import { AnimalComponentComponent } from './clinic-page/animal-component/animal-component.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ClinicComponent } from './main-page/clinics/clinic/clinic.component';
     MainPageComponent,
     ClinicPageComponent,
     ClinicsComponent,
-    ClinicComponent
+    ClinicComponent,
+    AnimalComponentComponent
   ],
   imports: [
     BrowserModule,
