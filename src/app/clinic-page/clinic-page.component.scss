@@ -36,9 +36,16 @@
 
 #animals-container {
     display:flex;
-    justify-content: center;
+    flex-direction: column;
     grid-column: 1;
     grid-row: 1 2;
+}
+
+#animal-component-container {
+    display:block;
+    margin: 10px;
+    width : 98%;
+    height:230px;
 }
 
 #clinic-information-container {
@@ -95,9 +102,4 @@
     width:100%;
     height:100%;
     z-index:3;
-}
-
-#animal-component-container {
-    width : 80%;
-    height:200px;
 }

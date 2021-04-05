@@ -1,14 +1,35 @@
 
 #animal-container {
-    background-color: lightblue;
-    width:100%;
+    display:flex;
+    justify-content:start;
+    align-items: center;
+    width:80%;
     height: 100%;
-
+    margin:auto;
+    border: solid rgb(48, 68, 90);
+    border-radius: 10px;
 }
 
 
-
 #animal-image {
-    width:180px;
-    height:180px;
+    width:200px;
+    height:200px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#description-container {
+    display:flex;
+    height:80%;
+    width: 80%;
+}
+
+.description-container {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 20px;
+    width:25%;
+    height:100%;
+    margin-right: 20px;
 }

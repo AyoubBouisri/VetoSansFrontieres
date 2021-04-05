@@ -2,15 +2,22 @@
     <img id='animal-image' [src]="photo" alt="">
 
     <div id="description-container">
-        <div id="name">{{animalInformations.name}}</div>
-        <div id="type">{{animalInformations.type}}</div>
-        <div id="espece">{{animalInformations.espece}}</div>
-        <div id="taille">{{animalInformations.taille}}</div>
-        <div id="poids">{{animalInformations.poids}}</div>
-        <div id="date-de-naissance">{{animalInformations.dateDeNaissance}}</div>
-        <div id="date-dinscription">{{animalInformations.dateDInscription}}</div>
-        <div id="etat">{{animalInformations.etat}}</div>
-        <div id="proprietaire">{{animalInformations.proprietaire}}</div>
+        <div class='description-container' id="container1">
+            <div id="name"><b>Nom :</b> {{animalInformations.name}}</div>
+            <div id="type"><b>Type :</b> {{animalInformations.type}}</div>
+            <div id="espece"><b>Espece :</b> {{animalInformations.espece}}</div>
+        </div>
+    
+        <div class='description-container' id="container2">
+            <div id="taille"><b>Taille :</b> {{animalInformations.taille}}</div>
+            <div id="poids"><b>Poids :</b> {{animalInformations.poids}}</div>
+            <div id="date-de-naissance"><b>Date de naissance :</b> {{animalInformations.dateDeNaissance}}</div>
+        </div>
+    
+        <div class='description-container' id="container3">
+            <div id="date-dinscription"><b>Date d'inscription :</b> {{animalInformations.dateDInscription}}</div>
+            <div id="etat"><b>Etat :</b> {{animalInformations.etat}}</div>
+            <div id="proprietaire"><b>Proprietaire :</b> {{animalInformations.proprietaire}}</div>
+        </div>
     </div>
-
 </div>
