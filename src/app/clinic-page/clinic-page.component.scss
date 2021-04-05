@@ -35,6 +35,8 @@
 }
 
 #animals-container {
+    display:flex;
+    justify-content: center;
     grid-column: 1;
     grid-row: 1 2;
 }
@@ -88,8 +90,14 @@
 #add-animal-btn:hover #add-img {
     filter: brightness(60%);
 }
+
 #add-img {
     width:100%;
     height:100%;
     z-index:3;
+}
+
+#animal-component-container {
+    width : 80%;
+    height:200px;
 }

@@ -6,7 +6,10 @@
         </button>
     </div>
 
-    <div id="animals-container" >
+    <div id="animals-container">
+        <div id="animal-component-container" *ngFor="let animal of animals">
+            <app-animal-component [animalInformations] = animal></app-animal-component>
+        </div>
     </div>
 
     <div id="clinic-information-container">
