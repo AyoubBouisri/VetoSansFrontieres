@@ -60,6 +60,50 @@ export class ClinicPageComponent {
         dateDInscription: '2 Mars 2021',
         etat: 'Vivant',
         proprietaire: 'Maraine Ginette'
+      },
+      {
+        name: 'Bilou',
+        type: 'Chien',
+        espece: 'Berger Allemand',
+        taille: '1.75 cm',
+        poids: '150 lbs',
+        dateDeNaissance: '12-Fevrier-2020',
+        dateDInscription: '2 Mars 2021',
+        etat: 'Vivant',
+        proprietaire: 'Who Knows !'
+      },
+      {
+        name: 'Pupi',
+        type: 'Chat',
+        espece: 'Chat Allemand',
+        taille: '3 cm',
+        poids: '400 lbs',
+        dateDeNaissance: '12-Fevrier-2020',
+        dateDInscription: '2 Mars 2021',
+        etat: 'Vivant',
+        proprietaire: 'Maraine Ginette'
+      },
+      {
+        name: 'Bilou',
+        type: 'Chien',
+        espece: 'Berger Allemand',
+        taille: '1.75 cm',
+        poids: '150 lbs',
+        dateDeNaissance: '12-Fevrier-2020',
+        dateDInscription: '2 Mars 2021',
+        etat: 'Vivant',
+        proprietaire: 'Who Knows !'
+      },
+      {
+        name: 'Pupi',
+        type: 'Chat',
+        espece: 'Chat Allemand',
+        taille: '3 cm',
+        poids: '400 lbs',
+        dateDeNaissance: '12-Fevrier-2020',
+        dateDInscription: '2 Mars 2021',
+        etat: 'Vivant',
+        proprietaire: 'Maraine Ginette'
       }
     ]
        

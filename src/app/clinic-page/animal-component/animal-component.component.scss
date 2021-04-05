@@ -33,3 +33,35 @@
     height:100%;
     margin-right: 20px;
 }
+
+#buttons-container {
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items:center;
+    position:relative;
+    right: 0;
+    background-color:rgb(48, 68, 90);;
+    height:100%;
+    width: 100px;
+}
+
+.animal-button {
+    width:50px;
+    height:50px;
+    border-radius: 100%;
+    z-index:2;
+}
+
+.animal-button:hover > img {
+    filter: brightness(90%);
+    cursor: pointer;
+
+}
+
+.button-img {
+    width:100%;
+    height:100%;
+    z-index: 2;
+}
+
