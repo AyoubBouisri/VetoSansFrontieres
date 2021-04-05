@@ -1,9 +1,15 @@
+
+
 #clinic-page-container {
+    position:absolute;
+    top:0;
+    left:0;
+    width:  100vw;
+    height:100vh;
     display: grid;
-    width: 99vw;
-    height:98vh;
     grid-template-columns: 82% 18%;
     grid-template-rows: 15% 85%;
+    background-color:#eeeff2;
 }
 
 #search-container {
@@ -48,6 +54,8 @@
     width : 98%;
     height:230px;
 }
+
+
 
 #clinic-information-container {
     display:flex;

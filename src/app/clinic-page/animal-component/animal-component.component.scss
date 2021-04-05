@@ -6,10 +6,13 @@
     width:80%;
     height: 100%;
     margin:auto;
-    border: solid rgb(48, 68, 90);
+    border: solid 2px rgb(48, 68, 90);
     border-radius: 10px;
 }
 
+#animal-container:hover{
+    background-color:rgba(48, 68, 90, 0.302)
+}
 
 #animal-image {
     width:200px;
