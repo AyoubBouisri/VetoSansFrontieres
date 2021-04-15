@@ -1,7 +1,8 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { CommunicationService } from 'src/communication.service';
+import {Clinique} from '../../../../../common/tables/clinique'
 
-
-// TODO fill up the clinic structure 
 export interface ClinicStructure {
   name: string;
   image : string;
@@ -19,40 +20,29 @@ export class ClinicsComponent {
   private readonly NUMBER_OF_IMAGES = 3;
   public clinics : ClinicStructure[] = []
 
-  constructor() {
-    this.clinics = this.getClinics();
+  constructor(private communicationService : CommunicationService) {
+      this.getClinics();
   }
   
   /**
    * Returns all the clinics under the foundation
    * TODO get the clinics from the database
    * @returns 
-   */
-  getClinics() : ClinicStructure[] {
-    return [
-      {
-        name : 'MONTREAL',
-        image : this.getRandomClinicImage(),
-        adress: '1234, rue LaRue, H2J 9Q5',
-        number: '291'
-      },
-      {
-        name : 'GATINEAU',
-        image : this.getRandomClinicImage(),
-        adress: '1234, rue LaRue, H2J 9Q5',
-        number: '042'
-      },
-      {
-        name : 'ONTARIO',
-        image : this.getRandomClinicImage(),
-        adress: '1234, rue LaRue, H2J 9Q5',
-        number: '934'
-      },
-      // {
-      //   name : 'VANCOUVER',
-      //   image : this.getRandomClinicImage()
-      // }
-    ]
+   */ 
+  getClinics() : void {
+    this.communicationService.getCliniques().subscribe((cliniques: Clinique[]) => {
+      this.clinics = []
+      console.log(cliniques)
+      for (let clinique of cliniques) {
+      this.clinics.push({
+        name: clinique.nom,
+        image: this.getRandomClinicImage(),
+        adress : `${clinique.rue}, ${clinique.codepostal}, ${clinique.ville} ${clinique.province}`,
+        number : clinique.noclinique
+      })
+    }
+    });
+   
   }
 
   private getRandomClinicImage() : string {

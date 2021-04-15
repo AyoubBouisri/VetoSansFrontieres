@@ -9,7 +9,9 @@ import Types from "../types";
 export class DatabaseController {
   public constructor(
     @inject(Types.DatabaseService) private databaseService: DatabaseService
-  ) {}
+  ) {
+    console.log('test')
+  }
 
   public get router(): Router {
     const router: Router = Router();
@@ -19,7 +21,7 @@ export class DatabaseController {
       this.databaseService
         .getAllCliniques()
         .then((result: pg.QueryResult) => {
-          res.json(result.rowCount);
+          res.json(result.rows);
         })
         .catch((e: Error) => {
           console.error(e.stack);

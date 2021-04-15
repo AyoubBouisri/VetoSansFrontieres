@@ -1,10 +1,5 @@
 import { injectable } from "inversify";
 import * as pg from "pg";
-import "reflect-metadata";
-import { Room } from "../../../common/tables/Room";
-import { Hotel } from "../../../common/tables/Hotel";
-import { Gender, Guest } from "../../../common/tables/Guest";
-import { visitLexicalEnvironment } from "typescript";
 
 @injectable()
 export class DatabaseService {
@@ -19,8 +14,7 @@ export class DatabaseService {
   };
 
   public pool: pg.Pool = new pg.Pool(this.connectionConfig);
-  
-  // ======= DEBUG =======
+
   public async getAllFromTable(tableName: string): Promise<pg.QueryResult> {
     const client = await this.pool.connect();
     const res = await client.query(`SELECT * FROM HOTELDB.${tableName};`);
