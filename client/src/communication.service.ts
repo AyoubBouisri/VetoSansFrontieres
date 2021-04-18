@@ -4,6 +4,7 @@ import { Injectable } from "@angular/core";
 import { of, Observable, Subject } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { Clinique } from "../../common/tables/clinique";
+import { animal } from "../../common/tables/animal";
 
 @Injectable()
 export class CommunicationService {
@@ -23,6 +24,18 @@ export class CommunicationService {
   public getCliniques(): Observable<Clinique[]> {
     return this.http
       .get<Clinique[]>(this.BASE_URL + "/cliniques")
+      .pipe(catchError(this.handleError<Clinique[]>("getCliniques")));
+  }
+
+  public getClinique(noClinique : string): Observable<Clinique> {
+    return this.http
+      .get<Clinique>(this.BASE_URL + "/cliniques/" + noClinique)
+      .pipe(catchError(this.handleError<Clinique>("getCliniques")));
+  }
+
+  public getAnimalsInClinique(noClinique: string): Observable<animal[]> {
+    return this.http
+      .get<Clinique[]>(this.BASE_URL + "/animaux/" + noClinique)
       .pipe(catchError(this.handleError<Clinique[]>("getCliniques")));
   }
 

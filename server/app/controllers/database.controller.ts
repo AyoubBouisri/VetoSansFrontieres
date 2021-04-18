@@ -10,7 +10,6 @@ export class DatabaseController {
   public constructor(
     @inject(Types.DatabaseService) private databaseService: DatabaseService
   ) {
-    console.log('test')
   }
 
   public get router(): Router {
@@ -29,12 +28,12 @@ export class DatabaseController {
     });
 
     router.get(
-      "/cliniques/noClinique",
+      "/cliniques/:noClinique",
       (req: Request, res: Response, _: NextFunction) => {
         this.databaseService
           .getCliniqueByNo(req.params.noClinique)
           .then((result: pg.QueryResult) => {
-            res.json(result.rowCount);
+            res.json(result.rows[0]);
           })
 
           .catch((e: Error) => {
@@ -42,6 +41,21 @@ export class DatabaseController {
           });
       }
     );
+
+    router.get(
+      "/animaux/:noClinique",
+      (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+          .getAllAnimalsFromClinique(req.params.noClinique)
+          .then((result: pg.QueryResult) => {
+            res.json(result.rows);
+          })
+
+          .catch((e: Error) => {
+            console.error(e.stack);
+          });
+      }
+    )
 
 
   //   router.post(

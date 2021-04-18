@@ -32,7 +32,6 @@ export class ClinicsComponent {
   getClinics() : void {
     this.communicationService.getCliniques().subscribe((cliniques: Clinique[]) => {
       this.clinics = []
-      console.log(cliniques)
       for (let clinique of cliniques) {
       this.clinics.push({
         name: clinique.nom,
