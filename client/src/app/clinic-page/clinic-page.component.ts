@@ -41,8 +41,9 @@ export class ClinicPageComponent {
   }
 
   getAnimals(id:string) : animalStructure[] {
-
+    this.animals = [];
     this.communicationService.getAnimalsInClinique(id).subscribe((animals : animal[]) => {
+      this.
     })
     return [
       {
