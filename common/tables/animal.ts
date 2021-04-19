@@ -1,5 +1,5 @@
 export interface animal {
-    noAnimal : number;
+    noanimal : number;
     nom : string;
     typeanimal : string;
     espece : string;

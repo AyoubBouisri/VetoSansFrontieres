@@ -8,7 +8,7 @@
 
     <div id="animals-container">
         <div id="animal-component-container" *ngFor="let animal of animals">
-            <app-animal-component [animalInformations] = animal></app-animal-component>
+            <app-animal-component [animalInformations] = animal (reloadAnimals)='getAnimals(clinicId)'></app-animal-component>
         </div>
     </div>
 

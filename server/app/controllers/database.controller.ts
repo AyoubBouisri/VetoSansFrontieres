@@ -57,6 +57,23 @@ export class DatabaseController {
       }
     )
 
+    router.post(
+      "/animaux/delete/:noAnimal",
+      (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+          .deleteAnimal(req.params.noAnimal)
+          .then((result: pg.QueryResult) => {
+            res.json(result.rowCount);
+          })
+
+          .catch((e: Error) => {
+            console.error(e.stack);
+            res.json(-1);
+          });
+      }
+
+    )
+
 
   //   router.post(
   //     "/hotels/insert",

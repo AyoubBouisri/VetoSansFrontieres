@@ -19,7 +19,7 @@ export class ClinicPageComponent {
     number: '',
     image: ''
   }
-
+  public clinicId : string = '';
   public animals: animalStructure[] = [];
 
   constructor(private route: ActivatedRoute, private communicationService : CommunicationService) {
@@ -27,6 +27,7 @@ export class ClinicPageComponent {
   }
 
   getClinicInformation( id: string ) : void {
+    this.clinicId = id;
     // temporary for now TODO change to get from DB
     const clinicInfo = this.communicationService.getClinique(id).subscribe((c : Clinique) => {
       this.clinicInformation = {
@@ -45,6 +46,7 @@ export class ClinicPageComponent {
     this.communicationService.getAnimalsInClinique(id).subscribe((animals : animal[]) => {
       for(let a of animals) {
         this.animals.push({
+          id: a.noanimal,
           name: a.nom,
           type: a.typeanimal,
           espece: a.espece,

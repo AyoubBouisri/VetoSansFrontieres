@@ -1,5 +1,6 @@
 import { injectable } from "inversify";
 import * as pg from "pg";
+import { animal } from "../../../common/tables/animal";
 
 @injectable()
 export class DatabaseService {
@@ -42,6 +43,22 @@ export class DatabaseService {
   public async getAllAnimalsFromClinique(cliniqueNo : string) : Promise<pg.QueryResult> {
     const client = await this.pool.connect();
     const queryText = `SELECT a.*, p.nom as nomProprietaire FROM bdschema.cliniqueproprietaire c, bdschema.animal a, bdschema.proprietaire p WHERE (c.noProprietaire=a.noProprietaire AND a.noProprietaire=p.noProprietaire AND noClinique='${cliniqueNo}');`
+    const res = await client.query(queryText);
+    client.release()
+    return res;
+  }
+
+  public async deleteAnimal(animalId: string) : Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText = `DELETE FROM bdschema.animal WHERE noAnimal = ${animalId};`
+    const res = await client.query(queryText);
+    client.release()
+    return res;
+  }
+
+  public async addAnimal(animal : animal) : Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText = `INSERT INTO bdschema.animal VALUES ((SELECT MAX(noAnimal) FROM bdschema.animal) + 1, '${animal.nom}', '${animal.typeanimal}', '${animal.espece}', '${animal.taille}', '${animal.poids}', '${animal.description}', '${animal.datenaissance}', '${animal.dateinscription}', '${animal.etatactuel}');`
     const res = await client.query(queryText);
     client.release()
     return res;

@@ -39,6 +39,12 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<animal[]>("getAnimalsInClinique")));
   }
 
+  public deleteAnimal(noAnimal:number) : Observable<void> {
+    return this.http
+      .post<void>(this.BASE_URL + "/animaux/delete/" + noAnimal, {})
+      .pipe(catchError(this.handleError<void>("deleteAnimal")));
+  }
+
 //   public insertHotel(hotel: Hotel): Observable<number> {
 //     return this.http
 //       .post<number>(this.BASE_URL + "/hotels/insert", hotel)
