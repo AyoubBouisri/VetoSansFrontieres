@@ -71,7 +71,7 @@ export class DatabaseService {
 
   public async addAnimal(animal : animal) : Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    const queryText = `INSERT INTO bdschema.animal VALUES ((SELECT MAX(noAnimal) FROM bdschema.animal) + 1, '${animal.nom}', '${animal.typeanimal}', '${animal.espece}', '${animal.taille}', '${animal.poids}', '${animal.description}', '${animal.datenaissance}', '${animal.dateinscription}', '${animal.etatactuel}');`
+    const queryText = `INSERT INTO bdschema.animal VALUES ((SELECT MAX(noAnimal) FROM bdschema.animal) + 1, '${animal.nom}', '${animal.typeanimal}', '${animal.espece}', '${animal.taille}', '${animal.poids}', '${animal.description}', '${animal.datenaissance}', '${animal.dateinscription}', '${animal.etatactuel}', '${animal.noproprietaire}');`
     const res = await client.query(queryText);
     client.release()
     return res;
@@ -80,6 +80,14 @@ export class DatabaseService {
   public async getFacture(noAnimal: string) : Promise<pg.QueryResult> {
     const client = await this.pool.connect();
     const queryText = `SELECT * FROM bdschema.facture WHERE noanimal = ${noAnimal};`
+    const res = await client.query(queryText);
+    client.release()
+    return res;
+  }
+
+  public async getProprietaires(noClinique: string) : Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText = `SELECT p.noproprietaire, p.nom FROM bdschema.cliniqueproprietaire c, bdschema.proprietaire p WHERE p.noproprietaire = c.noproprietaire AND c.noclinique = '${noClinique}';`
     const res = await client.query(queryText);
     client.release()
     return res;

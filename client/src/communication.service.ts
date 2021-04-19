@@ -6,6 +6,7 @@ import { catchError } from "rxjs/operators";
 import { Clinique } from "../../common/tables/clinique";
 import { animal } from "../../common/tables/animal";
 import {Facture} from '../../common/tables/facture'
+import { Proprietaire } from "../../common/tables/proprietaire";
 @Injectable()
 export class CommunicationService {
   private readonly BASE_URL: string = "http://localhost:3000/database";
@@ -33,6 +34,12 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<Clinique>("getCliniques")));
   }
 
+  public getCliniqueProprietaires(noClinique: string): Observable<Proprietaire[]> {
+    return this.http
+      .get<Proprietaire[]>(this.BASE_URL + "/proprietaires/" + noClinique )
+      .pipe(catchError(this.handleError<Proprietaire[]>("getCliniqueProprietaires")));
+  }
+
   public getAnimalsInClinique(noClinique: string): Observable<animal[]> {
     return this.http
       .get<animal[]>(this.BASE_URL + "/animaux/" + noClinique)
@@ -43,6 +50,12 @@ export class CommunicationService {
     return this.http
       .post<void>(this.BASE_URL + "/animaux/delete/" + noAnimal, {})
       .pipe(catchError(this.handleError<void>("deleteAnimal")));
+  }
+
+  public addAnimal(animal: animal) : Observable<number>{
+    return this.http
+    .post<number>(this.BASE_URL + "/animaux/insert/", animal)
+    .pipe(catchError(this.handleError<number>("addAnimal")));
   }
 
   public getAnimalsFromQuery(noClinique: string, queryText:string) : Observable<animal[]> {

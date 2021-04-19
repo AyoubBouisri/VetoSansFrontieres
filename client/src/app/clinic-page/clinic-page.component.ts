@@ -5,6 +5,8 @@ import { animalStructure } from './animal-component/animal-component.component';
 import { CommunicationService } from 'src/communication.service';
 import {Clinique} from '../../../../common/tables/clinique'
 import {animal} from '../../../../common/tables/animal'
+import {Proprietaire} from '../../../../common/tables/proprietaire'
+
 @Component({
   selector: 'app-clinic-page',
   templateUrl: './clinic-page.component.html',
@@ -20,6 +22,7 @@ export class ClinicPageComponent {
     image: ''
   }
   public clinicId : string = '';
+  public clinicProprietaires : Proprietaire[] = []
   public animals: animalStructure[] = [];
 
   public showTraitements:boolean = false;
@@ -33,16 +36,19 @@ export class ClinicPageComponent {
 
   getClinicInformation( id: string ) : void {
     this.clinicId = id;
-    // temporary for now TODO change to get from DB
-    const clinicInfo = this.communicationService.getClinique(id).subscribe((c : Clinique) => {
+    this.communicationService.getClinique(id).subscribe((c : Clinique) => {
       this.clinicInformation = {
         name: c.nom,
         adress : `${c.rue}, ${c.codepostal}, ${c.ville} ${c.province}`,      
         number: c.noclinique,
         image:''
       }
-
     })
+
+    this.communicationService.getCliniqueProprietaires(id).subscribe((p : Proprietaire[]) => {
+      this.clinicProprietaires = p;
+    })
+    
    this.getAnimals(id);
   }
 

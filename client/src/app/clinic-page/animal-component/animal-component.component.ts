@@ -46,7 +46,6 @@ export class AnimalComponentComponent {
   }
 
   emitFacture() : void {
-    console.log(this.animalInformations.id)
     this.showFacture.emit(this.animalInformations.id);
   }
 }

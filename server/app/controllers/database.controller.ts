@@ -87,6 +87,20 @@ export class DatabaseController {
       }
     )
 
+    router.get(
+      "/proprietaires/:noClinique", 
+      (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+          .getProprietaires(req.params.noClinique)
+          .then((result: pg.QueryResult) => {
+            res.json(result.rows);
+          })
+
+          .catch((e: Error) => {
+            console.error(e.stack);
+          });
+      }
+    )
     router.post(
       "/animaux/delete/:noAnimal",
       (req: Request, res: Response, _: NextFunction) => {
@@ -101,6 +115,24 @@ export class DatabaseController {
             res.json(-1);
           });
       }
+    )
+
+    router.post(  
+      "/animaux/insert",
+      (req: Request, res: Response, _: NextFunction) => {
+        console.log(req.body)
+        this.databaseService
+          .addAnimal(req.body)
+          .then((result: pg.QueryResult) => {
+            res.json(1);
+          })
+
+          .catch((e: Error) => {
+            console.error(e.stack);
+            res.json(-1);
+          });
+      }
+
     )
 
 

@@ -32,6 +32,6 @@
     </div>
 
     <div *ngIf="showAdd">
-        <app-add-animal (close)='showAdd=false'></app-add-animal>
+        <app-add-animal [proprietaires]='clinicProprietaires' (close)='showAdd=false'></app-add-animal>
     </div>
 </div>

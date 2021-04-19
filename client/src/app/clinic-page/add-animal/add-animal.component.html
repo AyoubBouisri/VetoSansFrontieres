@@ -1,61 +1,74 @@
 <div id="background">
     <div id="modale">
-        <div id="close-button" (click)='close.emit(true)'>
+        <div id="close-button" (click)='close.emit(false)'>
         </div>  
 
         <form class="form">
             <mat-form-field class="example-full-width">
               <mat-label>Nom</mat-label>
-              <input matInput placeholder="Ex. Popi" autocomplete="off">
+              <input id='nom-input' matInput placeholder="Ex. Popi" autocomplete="off">
             </mat-form-field>
           
             <mat-form-field class="example-full-width">
               <mat-label>Type</mat-label>
-              <input matInput placeholder="Ex. Chien" autocomplete="off">
+              <input id ='type-input' matInput placeholder="Ex. Chien" autocomplete="off">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
                 <mat-label>Espece</mat-label>
-                <input matInput placeholder="Ex. Berger-Allemand" autocomplete="off">
+                <input id ='espece-input' matInput placeholder="Ex. Berger-Allemand" autocomplete="off">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
                 <mat-label>Taille</mat-label>
-                <input type='decimal' matInput placeholder="Taille en cm" autocomplete="off">
+                <input id='taille-input' type='decimal' matInput placeholder="Taille en cm" autocomplete="off">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
                 <mat-label>Poids</mat-label>
-                <input type='decimal' matInput placeholder="Poids en kg" autocomplete="off">
+                <input id ='poids-input' type='decimal' matInput placeholder="Poids en kg" autocomplete="off">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
                 <mat-label>Description</mat-label>
-                <input type='decimal' matInput placeholder="Courte Description de l'animal" autocomplete="off">
+                <input id='description-input' type='decimal' matInput placeholder="Courte Description de l'animal" autocomplete="off">
             </mat-form-field>
             
             <mat-form-field class="example-full-width">
                 <mat-label>Date de naissance</mat-label>
-                <input type='decimal' matInput placeholder="Ex: 2020-02-12" autocomplete="off">
+                <input id='datenaissance-input' type='date' matInput placeholder="Ex: 2020-02-12" autocomplete="off">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
                 <mat-label>Date d'inscription</mat-label>
-                <input type='decimal' matInput placeholder="Ex: 2020-02-12" autocomplete="off">
+                <input id ='dateinscription-input' type='date' matInput placeholder="Ex: 2020-02-12" autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Etat</mat-label>
+                <select id='etat-input' matNativeControl required>
+                  <option value="vivant">Vivant</option>
+                  <option value="decede">Decede</option>
+                </select>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Proprietaire</mat-label>
-                <mat-select>
-                  <mat-option>Proprietaire</mat-option>
-                </mat-select>
-              </mat-form-field>
+                <select id ='proprietaire-input' *ngIf='(proprietaires.length !== 0);' matNativeControl required>
+                    <option *ngFor="let proprio of proprietaires" [value]="proprio.noproprietaire">
+                       {{proprio.nom}}
+                    </option>
+                </select>
+            </mat-form-field>
 
 
           </form>
 
-        <div id="apply-button">
+        <div id="apply-button" (click)='addAnimal()'>
             <img id ='apply-img' src="assets/buttons/apply.png" alt="">
+        </div>
+
+        <div id="error-modal">
         </div>
     </div>
 </div>
