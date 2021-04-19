@@ -4,5 +4,9 @@
         </div>  
 
         <div id="title">Liste de Traitements</div>
+
+        <div class="liste" *ngFor='let traitement of traitements'>
+            <b>noTraitement : </b>  {{traitement.notraitement}} <b>description</b> : {{traitement.description}} <b> cout : </b> {{traitement.cout}} <b>noVeterinaire : </b> {{traitement.noveterinaire}}
+        </div>
     </div>
 </div>

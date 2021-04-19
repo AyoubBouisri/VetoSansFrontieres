@@ -7,6 +7,9 @@ import { Clinique } from "../../common/tables/clinique";
 import { animal } from "../../common/tables/animal";
 import {Facture} from '../../common/tables/facture'
 import { Proprietaire } from "../../common/tables/proprietaire";
+import { Traitement } from "../../common/tables/traitement";
+
+
 @Injectable()
 export class CommunicationService {
   private readonly BASE_URL: string = "http://localhost:3000/database";
@@ -79,8 +82,21 @@ export class CommunicationService {
   public updateAnimal(animal: animal) : Observable<number>{
     return this.http
     .post<number>(this.BASE_URL + "/animal/update/", animal)
-    .pipe(catchError(this.handleError<number>("addAnimal")));
+    .pipe(catchError(this.handleError<number>("updateAnimal")));
   }
+
+  public getTraitements(animalId : string)  : Observable<Traitement[]>{
+    return this.http
+    .get<Traitement[]>(this.BASE_URL + "/traitements/" + animalId)
+    .pipe(catchError(this.handleError<Traitement[]>("getTraitements")));
+  }
+
+  public getExamens(animalId : string)  : Observable<Traitement[]>{
+    return this.http
+    .get<Traitement[]>(this.BASE_URL + "/examens/" + animalId)
+    .pipe(catchError(this.handleError<Traitement[]>("getTraitements")));
+  }
+
 
   private handleError<T>(
     request: string,

@@ -145,7 +145,38 @@ export class DatabaseController {
             res.json(-1);
           });
       }
+    )
 
+    router.get(
+      "/traitements/:noAnimal",
+      (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+          .getTraitements(req.params.noAnimal)
+          .then((result: pg.QueryResult) => {
+            res.json(result.rows);
+          })
+
+          .catch((e: Error) => {
+            console.error(e.stack);
+            res.json(-1);
+          });
+      }
+    )
+
+    router.get(
+      "/examens/:noAnimal",
+      (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+          .getExamens(req.params.noAnimal)
+          .then((result: pg.QueryResult) => {
+            res.json(result.rows);
+          })
+
+          .catch((e: Error) => {
+            console.error(e.stack);
+            res.json(-1);
+          });
+      }
     )
 
     router.post(

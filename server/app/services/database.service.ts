@@ -108,5 +108,27 @@ export class DatabaseService {
     return res;
   }
 
+  public async getTraitements(noAnimal : string): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText = `SELECT DISTINCT t.notraitement, t.description, t.cout, t.noveterinaire
+    FROM bdschema.examen e, bdschema.traitementMedical t
+    WHERE e.noTraitement = t.noExamen AND 
+    noAnimal = ${noAnimal};`
+    const res = await client.query(queryText);
+    client.release()
+    return res;
+  }
+
+  public async getExamens(noAnimal : string): Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText = `SELECT description, cout
+    FROM bdschema.examen 
+    WHERE noAnimal = ${noAnimal};`
+    const res = await client.query(queryText);
+    client.release()
+    return res;
+  }
+
+
 
 }

@@ -6,7 +6,7 @@
         <div id="title" class='description-facture'>Facture</div>
         
         <div id="numero-facture" class='description-facture'>
-            no <b>{{numeroFacture}}</b>
+            no : <b>{{numeroFacture}}</b>
         </div>
 
         <div id="etat" class='description-facture'> 
@@ -22,7 +22,9 @@
         </div>
 
         <div id="liste-traitements">
-
+            <div class="element-facture" *ngFor='let elem of factureElements'>
+                <b>Description</b> : {{elem.description}} <b>Cout</b> : {{elem.cout}} $
+            </div>
         </div>
 
         <div id="montant">

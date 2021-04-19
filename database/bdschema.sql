@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS bdschema.CliniqueProprietaire(
 	
 	
 CREATE TABLE IF NOT EXISTS bdschema.Animal(
-	noAnimal INTEGER NOT NULL,
+	noAnimal SERIAL NOT NULL,
 	nom VARCHAR(20) NOT NULL,
 	typeAnimal VARCHAR(20) NOT NULL,
 	espece VARCHAR(20) NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS bdschema.Examen(
 	description VARCHAR(100) NOT NULL,
 	descriptionResultats VARCHAR(100) NOT NULL,
 	noVeterinaire INTEGER NOT NULL,
-	cout MONEY NOT NULL,
+	cout MONEY DEFAULT 20,
 	noFacture INTEGER NOT NULL,
 	noAnimal INTEGER NOT NULL,
 	PRIMARY KEY (noTraitement),
