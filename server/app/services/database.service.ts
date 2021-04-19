@@ -41,7 +41,7 @@ export class DatabaseService {
 
   public async getAllAnimalsFromClinique(cliniqueNo : string) : Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    const queryText = `SELECT a.* FROM bdschema.cliniqueproprietaire c, bdschema.animal a WHERE (c.noProprietaire=a.noProprietaire AND c.noClinique='${cliniqueNo}');`
+    const queryText = `SELECT a.*, p.nom as nomProprietaire FROM bdschema.cliniqueproprietaire c, bdschema.animal a, bdschema.proprietaire p WHERE (c.noProprietaire=a.noProprietaire AND a.noProprietaire=p.noProprietaire AND noClinique='${cliniqueNo}');`
     const res = await client.query(queryText);
     client.release()
     return res;

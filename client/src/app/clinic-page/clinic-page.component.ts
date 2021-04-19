@@ -37,82 +37,25 @@ export class ClinicPageComponent {
       }
 
     })
-    this.animals = this.getAnimals(id);
+   this.getAnimals(id);
   }
 
-  getAnimals(id:string) : animalStructure[] {
+  getAnimals(id:string) : void{
     this.animals = [];
     this.communicationService.getAnimalsInClinique(id).subscribe((animals : animal[]) => {
-      this.
-    })
-    return [
-      {
-        name: 'Bilou',
-        type: 'Chien',
-        espece: 'Berger Allemand',
-        taille: '1.75 cm',
-        poids: '150 lbs',
-        dateDeNaissance: '12-Fevrier-2020',
-        dateDInscription: '2 Mars 2021',
-        etat: 'Vivant',
-        proprietaire: 'Who Knows !'
-      },
-      {
-        name: 'Pupi',
-        type: 'Chat',
-        espece: 'Chat Allemand',
-        taille: '3 cm',
-        poids: '400 lbs',
-        dateDeNaissance: '12-Fevrier-2020',
-        dateDInscription: '2 Mars 2021',
-        etat: 'Vivant',
-        proprietaire: 'Maraine Ginette'
-      },
-      {
-        name: 'Bilou',
-        type: 'Chien',
-        espece: 'Berger Allemand',
-        taille: '1.75 cm',
-        poids: '150 lbs',
-        dateDeNaissance: '12-Fevrier-2020',
-        dateDInscription: '2 Mars 2021',
-        etat: 'Vivant',
-        proprietaire: 'Who Knows !'
-      },
-      {
-        name: 'Pupi',
-        type: 'Chat',
-        espece: 'Chat Allemand',
-        taille: '3 cm',
-        poids: '400 lbs',
-        dateDeNaissance: '12-Fevrier-2020',
-        dateDInscription: '2 Mars 2021',
-        etat: 'Vivant',
-        proprietaire: 'Maraine Ginette'
-      },
-      {
-        name: 'Bilou',
-        type: 'Chien',
-        espece: 'Berger Allemand',
-        taille: '1.75 cm',
-        poids: '150 lbs',
-        dateDeNaissance: '12-Fevrier-2020',
-        dateDInscription: '2 Mars 2021',
-        etat: 'Vivant',
-        proprietaire: 'Who Knows !'
-      },
-      {
-        name: 'Pupi',
-        type: 'Chat',
-        espece: 'Chat Allemand',
-        taille: '3 cm',
-        poids: '400 lbs',
-        dateDeNaissance: '12-Fevrier-2020',
-        dateDInscription: '2 Mars 2021',
-        etat: 'Vivant',
-        proprietaire: 'Maraine Ginette'
+      for(let a of animals) {
+        this.animals.push({
+          name: a.nom,
+          type: a.typeanimal,
+          espece: a.espece,
+          taille: a.taille + ' cm',
+          poids: a.poids + ' kg',
+          dateDeNaissance: a.datenaissance.substring(0,10),
+          dateDInscription: a.dateinscription.substring(0,10),
+          etat: a.etatactuel,
+          proprietaire: a.nomproprietaire
+        })
       }
-    ]
-       
+    })
   }
 }

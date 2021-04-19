@@ -35,8 +35,8 @@ export class CommunicationService {
 
   public getAnimalsInClinique(noClinique: string): Observable<animal[]> {
     return this.http
-      .get<Clinique[]>(this.BASE_URL + "/animaux/" + noClinique)
-      .pipe(catchError(this.handleError<Clinique[]>("getCliniques")));
+      .get<animal[]>(this.BASE_URL + "/animaux/" + noClinique)
+      .pipe(catchError(this.handleError<animal[]>("getAnimalsInClinique")));
   }
 
 //   public insertHotel(hotel: Hotel): Observable<number> {
