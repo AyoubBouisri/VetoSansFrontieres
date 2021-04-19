@@ -11,7 +11,8 @@
 }
 
 #animal-container:hover{
-    background-color:rgba(48, 68, 90, 0.302)
+    background-color:rgba(48, 68, 90, 0.302);
+    cursor:pointer;
 }
 
 #animal-image {
@@ -26,6 +27,7 @@
     height:80%;
     width: 80%;
 }
+
 
 .description-container {
     display:flex;

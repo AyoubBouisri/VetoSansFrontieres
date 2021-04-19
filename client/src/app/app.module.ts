@@ -10,6 +10,7 @@ import { ClinicsComponent } from './main-page/clinics/clinics.component';
 import { ClinicComponent } from './main-page/clinics/clinic/clinic.component';
 import { AnimalComponentComponent } from './clinic-page/animal-component/animal-component.component';
 import { CommunicationService } from 'src/communication.service';
+import { ListeTraitementComponent } from './clinic-page/liste-traitement/liste-traitement.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CommunicationService } from 'src/communication.service';
     ClinicsComponent,
     ClinicComponent,
     AnimalComponentComponent,
+    ListeTraitementComponent,
   ],
   imports: [
     BrowserModule,

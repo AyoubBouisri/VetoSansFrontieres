@@ -1,7 +1,7 @@
 <div id="animal-container">
-    <img id='animal-image' [src]="photo" alt="">
+    <img id='animal-image' [src]="photo" alt="" (click) = 'showTraitements.emit(this.animalInformations.id)' title='Liste de traitements'>
 
-    <div id="description-container">
+    <div id="description-container" (click) = 'showTraitements.emit(this.animalInformations.id)' title='Liste de traitements'>
         <div class='description-container' id="container1">
             <div id="name"><b>Nom :</b> {{animalInformations.name}}</div>
             <div id="type"><b>Type :</b> {{animalInformations.type}}</div>

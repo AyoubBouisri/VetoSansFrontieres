@@ -22,8 +22,10 @@ export class AnimalComponentComponent {
 
   @Input() animalInformations: animalStructure;
   @Output() reloadAnimals = new EventEmitter<string>();
+  @Output() showTraitements = new EventEmitter<number>();
   
   photo: string = '';
+
   constructor(private communicationService:CommunicationService) {
     this.photo = this.getAnimalPhoto();
    }

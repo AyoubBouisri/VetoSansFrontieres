@@ -22,6 +22,9 @@ export class ClinicPageComponent {
   public clinicId : string = '';
   public animals: animalStructure[] = [];
 
+  public showTraitements:boolean = false;
+  public traitementsAnimalId : string = ''
+
   constructor(private route: ActivatedRoute, private communicationService : CommunicationService) {
     this.route.params.subscribe( params => this.getClinicInformation(params.id) );
   }

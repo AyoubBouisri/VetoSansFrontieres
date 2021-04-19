@@ -8,7 +8,7 @@
 
     <div id="animals-container">
         <div id="animal-component-container" *ngFor="let animal of animals">
-            <app-animal-component [animalInformations] = animal (reloadAnimals)='getAnimals(clinicId)'></app-animal-component>
+            <app-animal-component [animalInformations] = animal (showTraitements)="traitementsAnimalId='' + event" (reloadAnimals)='getAnimals(clinicId)'></app-animal-component>
         </div>
     </div>
 
@@ -23,4 +23,7 @@
         <img id='add-img' src="assets/clinic-images/add.png" alt="">
     </div>
 
+    <div *ngIf="(traitementsAnimalId !== '');">
+        <app-liste-traitement [animalId] = 'traitementsAnimalId' (close)="traitementsAnimalId=''" ></app-liste-traitement>
+    </div>
 </div>
