@@ -42,7 +42,7 @@ export class DatabaseService {
 
   public async getAllAnimalsFromClinique(cliniqueNo : string) : Promise<pg.QueryResult> {
     const client = await this.pool.connect();
-    const queryText = `SELECT a.*, p.nom as nomProprietaire FROM bdschema.cliniqueproprietaire c, bdschema.animal a, bdschema.proprietaire p WHERE (c.noProprietaire=a.noProprietaire AND a.noProprietaire=p.noProprietaire AND noClinique='${cliniqueNo}');`
+    const queryText = `SELECT a.*, p.nom as nomProprietaire FROM bdschema.cliniqueproprietaire c, bdschema.animal a, bdschema.proprietaire p WHERE (c.noProprietaire=a.noProprietaire AND a.noProprietaire=p.noProprietaire AND noClinique='${cliniqueNo}') ORDER BY a.nom;`
     const res = await client.query(queryText);
     client.release()
     return res;
@@ -53,9 +53,16 @@ export class DatabaseService {
     const queryText = `
     SELECT a.* 
     FROM bdschema.animal a, bdschema.cliniqueproprietaire c, bdschema.proprietaire p
-    WHERE (c.noProprietaire=a.noProprietaire AND a.noProprietaire=p.noProprietaire AND noClinique='${noClinique}') AND (CAST(noAnimal AS TEXT) LIKE '%${searchQuery}' OR a.nom iLIKE '%${searchQuery}%');
-    
+    WHERE (c.noProprietaire=a.noProprietaire AND a.noProprietaire=p.noProprietaire AND noClinique='${noClinique}') AND (CAST(noAnimal AS TEXT) LIKE '%${searchQuery}' OR a.nom iLIKE '%${searchQuery}%')  ORDER BY a.nom;
       `
+    const res = await client.query(queryText);
+    client.release()
+    return res;
+  }
+
+  public async getAnimal(noAnimal:string) : Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText = `SELECT * FROM bdschema.animal WHERE noAnimal = ${noAnimal};`
     const res = await client.query(queryText);
     client.release()
     return res;
@@ -72,6 +79,14 @@ export class DatabaseService {
   public async addAnimal(animal : animal) : Promise<pg.QueryResult> {
     const client = await this.pool.connect();
     const queryText = `INSERT INTO bdschema.animal VALUES ((SELECT MAX(noAnimal) FROM bdschema.animal) + 1, '${animal.nom}', '${animal.typeanimal}', '${animal.espece}', '${animal.taille}', '${animal.poids}', '${animal.description}', '${animal.datenaissance}', '${animal.dateinscription}', '${animal.etatactuel}', '${animal.noproprietaire}');`
+    const res = await client.query(queryText);
+    client.release()
+    return res;
+  }
+
+  public async updateAnimal(animal: animal) : Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText = `UPDATE bdschema.animal SET nom = '${animal.nom}', typeanimal = '${animal.typeanimal}', espece = '${animal.espece}', taille = '${animal.taille}', poids = '${animal.poids}', description = '${animal.description}', datenaissance = '${animal.datenaissance}', dateinscription='${animal.dateinscription}', etatactuel='${animal.etatactuel}', noproprietaire='${animal.noproprietaire}' WHERE noanimal = ${animal.noanimal};`
     const res = await client.query(queryText);
     client.release()
     return res;

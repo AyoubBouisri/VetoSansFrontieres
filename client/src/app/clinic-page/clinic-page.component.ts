@@ -29,6 +29,7 @@ export class ClinicPageComponent {
   public traitementsAnimalId : string = ''
   public factureAnimalId: string = ''
   public showAdd : boolean = false;
+  public animalToModify : string = ''
 
   constructor(private route: ActivatedRoute, private communicationService : CommunicationService) {
     this.route.params.subscribe( params => this.getClinicInformation(params.id) );
@@ -99,6 +100,11 @@ export class ClinicPageComponent {
         }
       })
     }
+  }
+
+  modifyAnimal(animalId: string) {
+    this.animalToModify = animalId;
+    this.showAdd = true;
   }
 
 

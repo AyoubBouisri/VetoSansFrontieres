@@ -8,7 +8,7 @@
 
     <div id="animals-container">
         <div id="animal-component-container" *ngFor="let animal of animals">
-            <app-animal-component [animalInformations] = animal (showTraitements)="traitementsAnimalId=$event" (showFacture)="factureAnimalId='' + $event;" (reloadAnimals)='getAnimals(clinicId)'></app-animal-component>
+            <app-animal-component [animalInformations] = animal (modify) = 'modifyAnimal($event)' (showTraitements)="traitementsAnimalId=$event" (showFacture)="factureAnimalId='' + $event;" (reloadAnimals)='getAnimals(clinicId)'></app-animal-component>
         </div>
     </div>
 
@@ -32,6 +32,6 @@
     </div>
 
     <div *ngIf="showAdd">
-        <app-add-animal [proprietaires]='clinicProprietaires' (close)='showAdd=false'></app-add-animal>
+        <app-add-animal [proprietaires]='clinicProprietaires' [animalId]='animalToModify' (close)="showAdd=false; animalToModify='';"></app-add-animal>
     </div>
 </div>

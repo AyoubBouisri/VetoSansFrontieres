@@ -40,6 +40,12 @@ export class CommunicationService {
       .pipe(catchError(this.handleError<Proprietaire[]>("getCliniqueProprietaires")));
   }
 
+  public getAnimal(animalId : string) : Observable<animal> {
+    return this.http
+      .get<animal>(this.BASE_URL + "/animal/" + animalId)
+      .pipe(catchError(this.handleError<animal>("getAnimalsInClinique")));
+  }
+
   public getAnimalsInClinique(noClinique: string): Observable<animal[]> {
     return this.http
       .get<animal[]>(this.BASE_URL + "/animaux/" + noClinique)
@@ -70,7 +76,11 @@ export class CommunicationService {
     .pipe(catchError(this.handleError<Facture>("getFacture")));
   }
 
-
+  public updateAnimal(animal: animal) : Observable<number>{
+    return this.http
+    .post<number>(this.BASE_URL + "/animal/update/", animal)
+    .pipe(catchError(this.handleError<number>("addAnimal")));
+  }
 
   private handleError<T>(
     request: string,

@@ -24,6 +24,7 @@ export class AnimalComponentComponent {
   @Output() reloadAnimals = new EventEmitter<string>();
   @Output() showTraitements = new EventEmitter<number>();
   @Output() showFacture = new EventEmitter<number>();
+  @Output() modify = new EventEmitter<string>();
   
   photo: string = '';
 
@@ -47,5 +48,9 @@ export class AnimalComponentComponent {
 
   emitFacture() : void {
     this.showFacture.emit(this.animalInformations.id);
+  }
+
+  emitModification() : void {
+    this.modify.emit('' + this.animalInformations.id)
   }
 }

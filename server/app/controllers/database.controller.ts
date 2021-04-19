@@ -71,7 +71,21 @@ export class DatabaseController {
           });
       }
     )
+    
+    router.get(
+      "/animal/:noAnimal", 
+      (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+          .getAnimal(req.params.noAnimal)
+          .then((result: pg.QueryResult) => {
+            res.json(result.rows[0]);
+          })
 
+          .catch((e: Error) => {
+            console.error(e.stack);
+          });
+      }
+    )
     router.get(
       "/facture/:noAnimal",
       (req: Request, res: Response, _: NextFunction) => {
@@ -120,7 +134,6 @@ export class DatabaseController {
     router.post(  
       "/animaux/insert",
       (req: Request, res: Response, _: NextFunction) => {
-        console.log(req.body)
         this.databaseService
           .addAnimal(req.body)
           .then((result: pg.QueryResult) => {
@@ -135,6 +148,20 @@ export class DatabaseController {
 
     )
 
+    router.post(
+      "/animal/update", 
+      (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+          .updateAnimal(req.body)
+          .then((result: pg.QueryResult) => {
+            res.json(1);
+          })
+
+          .catch((e: Error) => {
+            console.error(e.stack);
+            res.json(-1);
+          });
+    )
 
   //   router.post(
   //     "/hotels/insert",
