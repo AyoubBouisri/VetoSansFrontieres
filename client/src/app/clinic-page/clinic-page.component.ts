@@ -53,7 +53,7 @@ export class ClinicPageComponent {
    this.getAnimals(id);
   }
 
-  getAnimals(id:string) : void{
+  getAnimals(id:string = this.clinicId) : void{
     this.animals = [];
     this.communicationService.getAnimalsInClinique(id).subscribe((animals : animal[]) => {
       for(let a of animals) {
@@ -107,6 +107,11 @@ export class ClinicPageComponent {
     this.showAdd = true;
   }
 
+  closeAddModale(reload : boolean) : void {
+    this.showAdd=false; 
+    this.animalToModify=''; 
+    if(reload)this.getAnimals()
+  }
 
   
 }
