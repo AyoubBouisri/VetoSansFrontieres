@@ -2,21 +2,19 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
-## Development server
+## Running the application
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1) In /client run a 'npm install' to install all the packages needed for the client
+2) In /server run a 'npm install' to install all the packages needed for the server
 
-## Code scaffolding
+3) Generate your postgreSql Server using the files in the database folder
+    3.1 ) Use database/bdschema.sql to create the schema for your db
+    3.2 ) Use database/data.sql to insert all the data inside your tables
+    3.3 ) In the file server/services/database.service.ts Update the configuration dictionary from line 10 to 14 with the information of your postgreSql server.
+    3.4 ) IF no connection happens, try to reinstall the pg module with "npm uninstall pg", "npm uninstall pg.pool" and "npm install pg"
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+4) In /client run the command 'npm start' to launch the client on localhost:4200
+5) In /server run the command 'npm start' to launch the server on localhost:3000
 
 ## Further help
 
