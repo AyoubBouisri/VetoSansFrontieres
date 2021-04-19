@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { CommunicationService } from 'src/communication.service';
 
 export interface animalStructure {
@@ -23,23 +23,30 @@ export class AnimalComponentComponent {
   @Input() animalInformations: animalStructure;
   @Output() reloadAnimals = new EventEmitter<string>();
   @Output() showTraitements = new EventEmitter<number>();
+  @Output() showFacture = new EventEmitter<number>();
   
   photo: string = '';
 
   constructor(private communicationService:CommunicationService) {
-    this.photo = this.getAnimalPhoto();
-   }
+  }
 
+  ngOnChanges(changes: SimpleChanges) {
+    this.photo = this.getAnimalPhoto(this.animalInformations.id);
+  }
 
-  getAnimalPhoto() {
-    let randomNbr = Math.floor(Math.random() * 5) + 1;
+  getAnimalPhoto(id: number) {
+    let randomNbr = id % 5 + 1;
     return "assets/animals/" + randomNbr + ".jpg" 
   }
 
   delete() {
-    console.log(this.animalInformations.id);
     this.communicationService.deleteAnimal(this.animalInformations.id).subscribe(() => { 
       this.reloadAnimals.emit('')
     });
+  }
+
+  emitFacture() : void {
+    console.log(this.animalInformations.id)
+    this.showFacture.emit(this.animalInformations.id);
   }
 }

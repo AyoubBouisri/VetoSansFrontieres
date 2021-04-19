@@ -24,6 +24,8 @@ export class ClinicPageComponent {
 
   public showTraitements:boolean = false;
   public traitementsAnimalId : string = ''
+  public factureAnimalId: string = ''
+  public showAdd : boolean = false;
 
   constructor(private route: ActivatedRoute, private communicationService : CommunicationService) {
     this.route.params.subscribe( params => this.getClinicInformation(params.id) );
@@ -63,4 +65,36 @@ export class ClinicPageComponent {
       }
     })
   }
+
+  searchAnimals() : void {
+    const input = document.getElementById('search-input') as HTMLInputElement;
+    const query = input.value;
+
+    if (query === ''){
+      this.getAnimals(this.clinicId);
+      return 
+    }
+    else {
+      this.animals = [];
+      this.communicationService.getAnimalsFromQuery(this.clinicId, query).subscribe((animals : animal[]) => {
+        for(let a of animals) {
+          this.animals.push({
+            id: a.noanimal,
+            name: a.nom,
+            type: a.typeanimal,
+            espece: a.espece,
+            taille: a.taille + ' cm',
+            poids: a.poids + ' kg',
+            dateDeNaissance: a.datenaissance.substring(0,10),
+            dateDInscription: a.dateinscription.substring(0,10),
+            etat: a.etatactuel,
+            proprietaire: a.nomproprietaire
+          })
+        }
+      })
+    }
+  }
+
+
+  
 }

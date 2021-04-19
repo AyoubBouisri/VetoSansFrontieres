@@ -57,6 +57,36 @@ export class DatabaseController {
       }
     )
 
+    router.get(
+      "/animaux/:noClinique/:queryText",
+      (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+          .getAnimalsFromQuery(req.params.noClinique, req.params.queryText)
+          .then((result: pg.QueryResult) => {
+            res.json(result.rows);
+          })
+
+          .catch((e: Error) => {
+            console.error(e.stack);
+          });
+      }
+    )
+
+    router.get(
+      "/facture/:noAnimal",
+      (req: Request, res: Response, _: NextFunction) => {
+        this.databaseService
+          .getFacture(req.params.noAnimal)
+          .then((result: pg.QueryResult) => {
+            res.json(result.rows[0]);
+          })
+
+          .catch((e: Error) => {
+            console.error(e.stack);
+          });
+      }
+    )
+
     router.post(
       "/animaux/delete/:noAnimal",
       (req: Request, res: Response, _: NextFunction) => {
@@ -71,7 +101,6 @@ export class DatabaseController {
             res.json(-1);
           });
       }
-
     )
 
 

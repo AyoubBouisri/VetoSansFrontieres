@@ -48,6 +48,19 @@ export class DatabaseService {
     return res;
   }
 
+  public async getAnimalsFromQuery(noClinique: string, searchQuery:string ) : Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText = `
+    SELECT a.* 
+    FROM bdschema.animal a, bdschema.cliniqueproprietaire c, bdschema.proprietaire p
+    WHERE (c.noProprietaire=a.noProprietaire AND a.noProprietaire=p.noProprietaire AND noClinique='${noClinique}') AND (CAST(noAnimal AS TEXT) LIKE '%${searchQuery}' OR a.nom iLIKE '%${searchQuery}%');
+    
+      `
+    const res = await client.query(queryText);
+    client.release()
+    return res;
+  }
+
   public async deleteAnimal(animalId: string) : Promise<pg.QueryResult> {
     const client = await this.pool.connect();
     const queryText = `DELETE FROM bdschema.animal WHERE noAnimal = ${animalId};`
@@ -63,4 +76,14 @@ export class DatabaseService {
     client.release()
     return res;
   }
+
+  public async getFacture(noAnimal: string) : Promise<pg.QueryResult> {
+    const client = await this.pool.connect();
+    const queryText = `SELECT * FROM bdschema.facture WHERE noanimal = ${noAnimal};`
+    const res = await client.query(queryText);
+    client.release()
+    return res;
+  }
+
+
 }

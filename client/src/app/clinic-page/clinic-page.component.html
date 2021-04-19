@@ -1,14 +1,14 @@
 <div id="clinic-page-container">
     <div id="search-container">
-        <input type="text" id="search-input">
-        <button id="search-button">
+        <input type="text" id="search-input" (keyup.enter)='searchAnimals()'>
+        <button id="search-button" (click)='searchAnimals()'>
             <img src="assets/search-icon.png" alt="" id="search-img">
         </button>
     </div>
 
     <div id="animals-container">
         <div id="animal-component-container" *ngFor="let animal of animals">
-            <app-animal-component [animalInformations] = animal (showTraitements)="traitementsAnimalId='' + event" (reloadAnimals)='getAnimals(clinicId)'></app-animal-component>
+            <app-animal-component [animalInformations] = animal (showTraitements)="traitementsAnimalId=$event" (showFacture)="factureAnimalId='' + $event;" (reloadAnimals)='getAnimals(clinicId)'></app-animal-component>
         </div>
     </div>
 
@@ -19,11 +19,19 @@
         
     </div>
 
-    <div id="add-animal-btn">
+    <div id="add-animal-btn" (click)="showAdd=true">
         <img id='add-img' src="assets/clinic-images/add.png" alt="">
     </div>
 
     <div *ngIf="(traitementsAnimalId !== '');">
         <app-liste-traitement [animalId] = 'traitementsAnimalId' (close)="traitementsAnimalId=''" ></app-liste-traitement>
+    </div>
+
+    <div *ngIf="(factureAnimalId !== '');">
+        <app-facture [animalId] = 'factureAnimalId' (close)="factureAnimalId=''"></app-facture>
+    </div>
+
+    <div *ngIf="showAdd">
+        <app-add-animal (close)='showAdd=false'></app-add-animal>
     </div>
 </div>

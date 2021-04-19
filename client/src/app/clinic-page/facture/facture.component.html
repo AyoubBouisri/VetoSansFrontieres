@@ -1,0 +1,33 @@
+<div id="background">
+    <div id="modale">
+        <div id="close-button" (click)='close.emit(true)'>
+        </div>  
+
+        <div id="title" class='description-facture'>Facture</div>
+        
+        <div id="numero-facture" class='description-facture'>
+            no <b>{{numeroFacture}}</b>
+        </div>
+
+        <div id="etat" class='description-facture'> 
+            etat : {{etat}}
+        </div>
+
+        <div id="date" class='description-facture'>
+            date de facturation : {{date}}
+        </div>
+
+        <div id="mode-paiement" class='description-facture'>
+            mode de paiement : {{modePaiement}}
+        </div>
+
+        <div id="liste-traitements">
+
+        </div>
+
+        <div id="montant">
+            {{montant}}
+        </div>
+
+    </div>
+</div>

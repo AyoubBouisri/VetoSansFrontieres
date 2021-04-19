@@ -11,6 +11,13 @@ import { ClinicComponent } from './main-page/clinics/clinic/clinic.component';
 import { AnimalComponentComponent } from './clinic-page/animal-component/animal-component.component';
 import { CommunicationService } from 'src/communication.service';
 import { ListeTraitementComponent } from './clinic-page/liste-traitement/liste-traitement.component';
+import { AddAnimalComponent } from './clinic-page/add-animal/add-animal.component';
+import { FactureComponent } from './clinic-page/facture/facture.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field'
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -22,12 +29,18 @@ import { ListeTraitementComponent } from './clinic-page/liste-traitement/liste-t
     ClinicComponent,
     AnimalComponentComponent,
     ListeTraitementComponent,
+    AddAnimalComponent,
+    FactureComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [
     CommunicationService,

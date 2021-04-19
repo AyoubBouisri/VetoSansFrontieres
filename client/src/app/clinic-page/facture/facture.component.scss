@@ -1,0 +1,69 @@
+#background {
+    position:absolute;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background-color:rgb(66, 66, 66, 0.5);
+    z-index:3;
+}
+
+#modale {
+    background-color:white;
+    opacity:1;
+    width:80%;
+    height:80%;
+    border-radius:20px;
+}
+
+#close-button {
+    position:relative;
+    float: right;
+    width:20px;
+    height:20px;
+    background-color:rgb(197, 40, 69);
+    border-radius:100%;
+    border: solid 1px rgb(109, 17, 22);
+    margin:20px;
+    
+}
+
+#close-button:hover{
+    background-color:rgb(230, 61, 92);
+    cursor:pointer;
+}
+
+#title {
+    margin-left:40px;
+    margin-top:30px;
+    font-size: 50px;
+    font-weight:bold;
+}
+
+.description-facture {
+    margin-left:40px;
+    font-size:20px;
+}
+
+
+#liste-traitements {
+    background-color:lightcoral;
+    width:100%;
+    height:60%;
+}
+
+#montant {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top:20px;
+
+}

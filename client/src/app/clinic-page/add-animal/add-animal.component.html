@@ -1,0 +1,61 @@
+<div id="background">
+    <div id="modale">
+        <div id="close-button" (click)='close.emit(true)'>
+        </div>  
+
+        <form class="form">
+            <mat-form-field class="example-full-width">
+              <mat-label>Nom</mat-label>
+              <input matInput placeholder="Ex. Popi" autocomplete="off">
+            </mat-form-field>
+          
+            <mat-form-field class="example-full-width">
+              <mat-label>Type</mat-label>
+              <input matInput placeholder="Ex. Chien" autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Espece</mat-label>
+                <input matInput placeholder="Ex. Berger-Allemand" autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Taille</mat-label>
+                <input type='decimal' matInput placeholder="Taille en cm" autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Poids</mat-label>
+                <input type='decimal' matInput placeholder="Poids en kg" autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Description</mat-label>
+                <input type='decimal' matInput placeholder="Courte Description de l'animal" autocomplete="off">
+            </mat-form-field>
+            
+            <mat-form-field class="example-full-width">
+                <mat-label>Date de naissance</mat-label>
+                <input type='decimal' matInput placeholder="Ex: 2020-02-12" autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Date d'inscription</mat-label>
+                <input type='decimal' matInput placeholder="Ex: 2020-02-12" autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Proprietaire</mat-label>
+                <mat-select>
+                  <mat-option>Proprietaire</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+
+          </form>
+
+        <div id="apply-button">
+            <img id ='apply-img' src="assets/buttons/apply.png" alt="">
+        </div>
+    </div>
+</div>

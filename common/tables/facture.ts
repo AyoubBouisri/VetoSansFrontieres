@@ -1,8 +1,8 @@
-export interface facture {
-    noFacture : number;
-    dateFacture: string;
+export interface Facture {
+    nofacture : string;
+    datefacture: string;
     montant : number;
     etat : string;
-    modePaiement : string;
+    modepaiement : string;
     noAnimal : number;
 }
